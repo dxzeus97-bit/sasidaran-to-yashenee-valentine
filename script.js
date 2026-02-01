@@ -58,3 +58,30 @@ function createHeart() {
     heart.remove();
   }, 5000);
 }
+function createConfetti() {
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.innerHTML = "🎉";
+    confetti.style.position = "fixed";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.top = "-10px";
+    confetti.style.fontSize = Math.random() * 24 + 12 + "px";
+    confetti.style.animation = `fall ${3 + Math.random() * 2}s linear forwards`;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 5000);
+  }
+}
+
+// Add inside yes() function, after popup display
+function yes() {
+  document.getElementById("response").innerHTML =
+    "Yay! You just made Sasidaran the happiest person ❤️🥹";
+
+  document.getElementById("popup").style.display = "flex";
+
+  const song = document.getElementById("valentineSong");
+  if (song) song.play();
+
+  createConfetti();
+}
